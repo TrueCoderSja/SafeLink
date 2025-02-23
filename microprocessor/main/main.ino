@@ -1,18 +1,10 @@
-#include <LoRa.h>
-
-#include "LoRaHandler.h"
+#include "server.h"
 
 void setup() {
-    if (!initLoRa()) {
-        while (1); // Halt if LoRa initialization fails
-    }
-    
-    // Example: Change frequency after initialization
-    delay(3000);
-    // setLoRaFrequency(868E6); // Change to 868 MHz
+  Serial.begin(115200);
+  setupServer();  // Initialize the web server
 }
 
 void loop() {
-    sendLoRaMessage("Hello, LoRa!");
-    delay(2000);
+  handleClientRequests();  // Handle incoming requests
 }

@@ -1,55 +1,57 @@
+# **LoRa Mesh Chat**  
+**Send text messages without a mobile network using LoRa and ESP32/ESP8266**  
 
-**Security Band**
+## **Overview**  
+LoRa Mesh Chat is a communication system that allows users to send text messages without relying on traditional mobile networks or the internet. It uses an ESP32 or ESP8266 microcontroller with a LoRa module to create a Wi-Fi Access Point (AP). Users can connect via their mobile phones or computers and access a chat interface at `192.168.1.1` to send and receive messages over LoRa.  
 
-**🚀 Overview**
+## **Features**  
+✅ **Offline Communication** – No mobile network or internet required.  
+✅ **Wi-Fi Hotspot** – ESP32/ESP8266 creates a local Wi-Fi AP.  
+✅ **Web-based Chat Interface** – Accessible at `192.168.1.1`.  
+✅ **LoRa-based Messaging** – Messages are transmitted over long distances using LoRa.  
+✅ **Multi-User Support** – Multiple devices can connect to the ESP for messaging.  
+✅ **Timestamped Messages** – Each message includes a timestamp to avoid duplication.  
 
-The **LoRa-Based Security Band** is a **wearable safety device** designed for **emergency situations** where cellular networks are unavailable. It uses **LoRa (Long Range) communication** to send **SOS alerts** with **GPS location** to nearby receivers, ensuring help can be dispatched quickly. It not only records the environment sounds , but also sends sos sms to all the nearby residents within the radius of our component.
+## **How It Works**  
+1. The ESP32/ESP8266 creates a Wi-Fi AP.  
+2. Users connect to the AP from their mobile devices or computers.  
+3. A web-based chat interface is available at `192.168.1.1`.  
+4. Users send messages, which are transmitted via LoRa.  
+5. Incoming messages are displayed on the chat interface.  
 
-**🌍 Problem Statement**
+## **Hardware Requirements**  
+- ESP32 or ESP8266  
+- LoRa Module (SX1276/SX1278)  
+- Power source (battery or USB)  
+- Mobile phone or computer for accessing the chat interface  
 
-In remote or crime-prone areas, **cellular networks may not be available**, leaving individuals vulnerable in dangers/emergencies. The **Security Band** solves this by using **LoRa technology** to send **real-time distress signals** without needing the internet.
+## **Software Requirements**  
+- Arduino IDE or PlatformIO  
+- ESPAsyncWebServer library  
+- LoRa library (RadioHead or Arduino-LoRa)  
+- WebSocket support for real-time messaging  
 
-**🛠️ Tech Stack & Hardware Components ( key components used ) -**
+## **Installation & Setup**  
 
-**🔹 Hardware:**
+### **1. Flash the ESP32/ESP8266**  
+1. Install the required libraries in the Arduino IDE.  
+2. Flash the firmware onto the ESP32/ESP8266.  
 
--   **Microcontroller:** ESP32 / Arduino Mega 2560
--   **LoRa Module:** SX1278 / Ra-02
--   **GPS Module:** NEO-6M / u-blox M8N
--   **Push Button/ Pressure Sensor :** For SOS activation
+### **2. Connect to Wi-Fi AP**  
+1. Power on the ESP32/ESP8266.  
+2. Connect to the Wi-Fi AP (default SSID: `LoRaChat`).  
+3. Open a browser and go to `192.168.1.1`.  
 
-**🔹 Software:**
+### **3. Start Chatting!**  
+- Type a message and send it.  
+- The message is transmitted over LoRa to other devices in the network.  
+- Incoming messages are displayed in real time.  
 
--   Arduino IDE
--   LoRaWAN Protocol
--   Node js, Express Server
--   Android app
+## **Future Enhancements**  
+🔹 **Mesh Networking** – Enable multi-hop communication for extended range.  
+🔹 **Encryption** – Secure messages with AES encryption.  
+🔹 **Message Persistence** – Store messages in flash memory.  
+🔹 **Mobile App** – A dedicated Android/iOS app for better user experience.  
 
-**How It Works**
-
-**1. User presses the SOS button** on the band.  
-2️. The **LoRa module** transmits an **SOS message** with location data.  
-3️. Nearby **LoRa-enabled bands** within range receive the SOS signal.  
-4️. These bands forward the event to the **receiver's phone** via **Bluetooth or Wi-Fi**.  
-5️. The **companion app** on the receiver’s phone processes the event and sends it to a **central server**.  
-6️. The **server relays the alert** to **nearby residents, emergency contacts, and the local police station**.  
-7️. This **LoRa mesh network** ensures the SOS reaches the maximum possible range.
-
-**🔗 System Architecture**
-
-[Security Band] --LoRa--> [Receiver Node] – [Receiver’s mobile] --> [Server] --> [local residents/emergency contacts/ local police station]
-
-**🚀 Features**
-
-✅ **Works Without Internet** – Uses LoRa instead of cellular networks.  
-✅ **Low Power Consumption** – Designed for long-lasting use.  
-✅ **Real-Time GPS Location** – Sends accurate coordinates in emergencies.  
-✅ **Long-Range Communication** – Can reach up to **10-15 km in rural areas**.  
-✅ **Mesh Network Support** – Multiple LoRa nodes can extend the range.  
-✅ **Compact & Wearable Design** – Lightweight for everyday use.
-
-**🤝 Contributors & Contact**
-
-Developed by **[Dextern]** & Team for **[Foss Hack]** 🚀
-
-----------
+## **License**  
+This project is open-source under the MIT License. Feel free to contribute!  
