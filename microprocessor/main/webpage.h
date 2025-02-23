@@ -147,9 +147,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     </div>
 
     <script>
-        const API_URL = "http://192.168.1.1"; // ESP32 AP IP
-
-        let username = "";
+        let username = "", lastMsgTimestamp=null;
 
         function setUsername() {
             username = document.getElementById("usernameInput").value;
@@ -158,7 +156,7 @@ const char index_html[] PROGMEM = R"rawliteral(
                 return;
             }
 
-            fetch(`${API_URL}/setuser`, {
+            fetch(`/setuser`, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: `username=${username}`
@@ -175,7 +173,7 @@ const char index_html[] PROGMEM = R"rawliteral(
                 return;
             }
 
-            fetch(`${API_URL}/send`, {
+            fetch(`/send`, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: `message=${message}`
@@ -189,11 +187,14 @@ const char index_html[] PROGMEM = R"rawliteral(
         }
 
         function fetchLoRaMessages() {
-            fetch(`${API_URL}/loradata`)
+            fetch(`/loradata`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.message) {
-                        addMessage("received", `${data.username}: ${data.message}`);
+                        if(data.timestamp!=lastMsgTimestamp){
+                            addMessage("received", `${data.message}`);
+                            lastMsgTimestamp=data.timestamp;
+                        }
                     }
                 })
                 .catch(error => console.error("Error fetching messages:", error));
