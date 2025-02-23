@@ -4,6 +4,9 @@
 ## **Overview**  
 LoRa Mesh Chat is a communication system that allows users to send text messages without relying on traditional mobile networks or the internet. It uses an ESP32 or ESP8266 microcontroller with a LoRa module to create a Wi-Fi Access Point (AP). Users can connect via their mobile phones or computers and access a chat interface at `192.168.1.1` to send and receive messages over LoRa.  
 
+## **Video Demo**
+[Watch the demo](https://drive.google.com/file/d/1sUTXAzZmoh4pMkorK5Ep2JJ7oaTq00uj/view?usp=sharing)
+
 ## **Features**  
 ✅ **Offline Communication** – No mobile network or internet required.  
 ✅ **Wi-Fi Hotspot** – ESP32/ESP8266 creates a local Wi-Fi AP.  
